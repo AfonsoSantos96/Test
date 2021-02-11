@@ -1,5 +1,7 @@
-# Jenkins_demo
 
-Hello Jenkins!!
-Uni test2
+int main()
+{
+  int a= 0;
+   while ( (a++) <50);
+}
 
