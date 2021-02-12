@@ -34,7 +34,7 @@ install:
   - sudo apt-get install -qq cppcheck
 
 script:
-  - g++ main.cpp -std=c++17 -o travis_gcc_cpp17
+  - g++ main.c -std=c++17 -o travis_gcc_cpp17
   - ./travis_gcc_cpp17
   
   # cppcheck
