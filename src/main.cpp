@@ -24,7 +24,6 @@
 
 #include <producer.h>
 #include <consumer.h>
-#include <vector>
 
 int
 MAIN(int argc, char *argv[])
