@@ -5,23 +5,19 @@ compiler:
 dist:     trusty
 
 
-matrix:
-  include:
-  #CLang
-    # works on Trusty
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - llvm-toolchain-trusty-5.0
-          packages:
-            - clang-5.0
-      env:
-        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
-
+include:
+#CLang
+  # works on Trusty
+  - os: linux
+    addons:
+      apt:
+        sources:
+          - llvm-toolchain-trusty-5.0
+        packages:
+          - clang-5.0
+     
 
 before_install:
-  - eval "${MATRIX_EVAL}"
 	#C++17
   - sudo add-apt repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
@@ -32,6 +28,10 @@ install:
   
   # cppcheck
   - sudo apt-get install -qq cppcheck
+  
+  
+#env:
+#  - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
 
 script:
   - g++ main.c -std=c++17 -o travis_gcc_cpp17
