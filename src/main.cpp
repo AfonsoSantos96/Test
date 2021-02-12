@@ -30,9 +30,6 @@ MAIN(int argc, char *argv[])
 {
     (void) argc;
     (void) argv;
-    
-int v[3]= {1,2,3};
-    v[3] = 4;
 
     producer p{};
     consumer c{&p};
