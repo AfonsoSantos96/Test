@@ -108,23 +108,35 @@ matrix:
   #       exit -1
   #     fi
 
-  #
-  # Clang
-  #  
-  - os: linux
-    env:
-      - TEST="Clang"
-    addons:
-      apt:
-        sources:
-          - llvm-toolchain-trusty-5.0
-          - key_url: 'http://apt.llvm.org/llvm-snapshot.gpg.key'
-        packages:
-          - clang-format-5.0
-    script:
-      - ./run-clang-format.py -r src
-  
-  
+ #
+ # Clang
+ #  
+#  - os: linux
+#    env:
+#      - TEST="Clang"
+#    addons:
+#      apt:
+#        sources:
+#          - llvm-toolchain-trusty-5.0
+#          - key_url: 'http://apt.llvm.org/llvm-snapshot.gpg.key'
+#        packages:
+#          - clang-format-5.0
+#    script:
+#      - ./run-clang-format.py -r src
+
+
+    # works on Trusty
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - llvm-toolchain-trusty-5.0
+          packages:
+            - clang-5.0
+      env:
+        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+        
+        
   #
   # Clang Tidy
   #
