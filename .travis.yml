@@ -70,6 +70,7 @@ matrix:
   #
   # Git Check
   #
+
  # - os: linux
  #   env:
  #     - TEST="Git Check"
@@ -81,6 +82,7 @@ matrix:
  #         git diff --check HEAD^
  #         exit -1
  #       fi
+
   #
   # Astyle Format
   #
