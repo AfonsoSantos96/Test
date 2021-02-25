@@ -153,6 +153,24 @@ matrix:
       - make
       - make check
 
+
+
+# Clang Format
+  #
+  - os: linux
+    env:
+      - TEST="Clang Format"
+    addons:
+      apt:
+      sources:
+        - ubuntu-toolchain-r-test
+        - llvm-toolchain-trusty
+      packages:
+        - clang-format
+      script:
+      - clang-format --dry-run -Werror src/main.cpp
+      
+      
   #
   # Coverity Scan
   #
