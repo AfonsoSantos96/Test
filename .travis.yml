@@ -237,6 +237,9 @@ matrix:
 - os: linux
     env:
       - TEST="Clang Format"
+    complier:
+    - gcc
+    - clang
     addons:
       apt:
       sources:
@@ -245,12 +248,13 @@ matrix:
       packages:
         - clang-format
       script:
-      - ../run-clang-format.py --clang-format-executable clang-format -r ../src --style file
-      - rc=$?
-      - if [[ $rc == 0 ]]
-        then
-        echo "Nothing needs to be reformatted!"
-        exit 0
+      - clang-format -i ../src/main.cpp
+      - git diff > clang_format.patch
+      - cat clang_format.patch
+      - 'if [ ! -s clang_format.patch ]; then
+          exit 0;
         else
-        exit -1
-        fi
+          exit 1;
+        fi'
+      after_success:
+      - bash <(curl -s https://codecov.io/bash)
