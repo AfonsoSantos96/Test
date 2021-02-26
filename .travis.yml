@@ -237,9 +237,6 @@ matrix:
 - os: linux
     env:
       - TEST="Clang Format"
-    complier:
-    - gcc
-    - clang
     addons:
       apt:
       sources:
