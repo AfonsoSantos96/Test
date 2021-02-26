@@ -120,12 +120,12 @@ matrix:
         packages:
           - clang-4.0
           - clang-tidy-4.0
-          - clang-format-4
+          - clang-format-4.0
           - gcc-6
           - g++-6
     script:
       - cmake -DENABLE_CLANG_TIDY=ON -DCMAKE_CXX_COMPILER="g++-6" ..
-      - clang-format-4 -i ../src/main.cpp
+      - clang-format-4.0 -i ../src/main.cpp
       - git diff > clang_format.patch
       - cat clang_format.patch
       - 'if [ ! -s clang_format.patch ]; then
