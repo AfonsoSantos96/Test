@@ -245,8 +245,7 @@ matrix:
       packages:
         - clang-format
       script:
-      - cd ..
-      - ./run-clang-format.py --clang-format-executable clang-format -r src --style file
+      - ../run-clang-format.py --clang-format-executable clang-format -r ../src --style file
       - rc=$?
       - if [[ $rc == 0 ]]
         then
