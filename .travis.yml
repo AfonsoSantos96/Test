@@ -248,7 +248,6 @@ matrix:
           name: AfonsoSantos96/Test
           build_command_prepend: "cmake ."
           build_command: "make"
-          branch_pattern: coverity_scan
       apt:
        sources:
         - ubuntu-toolchain-r-test
