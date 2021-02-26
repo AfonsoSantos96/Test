@@ -245,8 +245,13 @@ matrix:
       packages:
         - clang-format
       script:
-      - clang-format -i ../src/main.cpp
-      - git diff > clang_format.patch
-      - cat clang_format.patch
+        - clang-format -i ../src/main.cpp
+        - git diff > clang_format.patch
+        - cat clang_format.patch
+        - 'if [ ! -s clang_format.patch ]; then
+          exit 0;
+        else
+          exit 1;
+        fi'
       after_success:
       - bash <(curl -s https://codecov.io/bash)
