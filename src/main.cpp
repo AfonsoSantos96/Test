@@ -22,6 +22,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+void foo(int x)
+{
+    int buf[10];
+    if (x == 1000)
+        buf[x] = 0; // <- ERROR
+}
 
 int MAIN(int argc, char *argv[])
 {
@@ -29,5 +35,6 @@ int MAIN(int argc, char *argv[])
     while( a <  50)        					{ 
         a ++    ;
     }
+    foo(1000);
     return 1;
 }
