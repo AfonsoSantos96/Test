@@ -181,9 +181,9 @@ matrix:
       apt:
         sources:
           - ubuntu-toolchain-r-test
-          - llvm-toolchain-trusty-3.9
+#          - llvm-toolchain-trusty-3.9
         packages:
-          - clang-3.9
+#          - clang-3.9
           - gcc-6
           - g++-6
       coverity_scan:
@@ -195,11 +195,11 @@ matrix:
         build_command_prepend: "cmake ."
         build_command: "make"
   #      branch_pattern: master
-      before_script:
-        - cmake .
+#      before_script:
+#        - cmake .
     script:
       - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-      - make
+#      - make
  
  #
   # G++ 5
