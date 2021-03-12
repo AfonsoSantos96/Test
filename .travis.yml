@@ -213,12 +213,16 @@ matrix:
       - make test
 
   #
-  # Clang 3.9
+  # Coverity
   #
   - os: linux
     env:
-      - TEST="Clang 3.9"
+      - TEST="Coverity"
     addons:
+      coverity_scan:
+        build_command_prepend: "cmake ."
+        build_command: "make"
+        branch_pattern: coverity_scan
       apt:
         sources:
           - ubuntu-toolchain-r-test
@@ -231,8 +235,24 @@ matrix:
       - cmake -DCMAKE_C_COMPILER=clang-3.9 -DCMAKE_CXX_COMPILER=clang++-3.9 ..
       - make
       - make test
-      
-      
+
+    compiler:
+      - gcc
+      - clang
+
+    before_script:
+      - cmake .
+
+    script:
+      - make
+
+    install:
+      # Use g++4.8 and not 4.6 (C++11 missing)
+      - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+
+    branches:
+      only:
+        - coverity_scan
       
 - os: linux
     env:
