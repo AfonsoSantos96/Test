@@ -171,35 +171,6 @@ matrix:
       - clang-format --dry-run -Werror src/main.cpp
       
       
-  #
-  # Coverity Scan
-  #
-  - os: linux
-    env:
-      - TEST="Coverity Scan"
-    addons:
-      apt:
-        sources:
-          - ubuntu-toolchain-r-test
-#          - llvm-toolchain-trusty-3.9
-        packages:
-#          - clang-3.9
-          - gcc-6
-          - g++-6
-      coverity_scan:
-        project:
-          name: " AfonsoSantos96/travis_ci_setup"
-          description: "A simple example of how to setup a complete CI environment for C and C++"
-        notification_email: afomms@gmail.com
-#        build_command_prepend: "cmake -DCMAKE_CXX_COMPILER=g++-6 .."
-        build_command_prepend: "cmake ."
-        build_command: "make"
-  #      branch_pattern: master
-#      before_script:
-#        - cmake .
-    script:
-      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-#      - make
  
  #
   # G++ 5
